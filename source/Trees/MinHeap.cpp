@@ -62,9 +62,19 @@ void MinHeap::erase(int data){
 void MinHeap::print(std::ostream &oss){
 }
 
-void swim(){
-    int temp =
-    
+void swap(int* y, int* x) {
+  int temp;
+  temp = *y;
+  *y = *x;
+  *x = temp;
+}
+
+void MinHeap::swim(){ 
+    int temp = size;
+    while(array[temp] < array[temp/2] && temp !=1){
+        swap(&array[temp], &array[temp/2]);
+        temp = temp / 2;
+    }
 }
 void sink(int i){
 
