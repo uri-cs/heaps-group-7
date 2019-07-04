@@ -54,22 +54,25 @@ int MinHeap::peek(){
 }
 
 bool MinHeap::search(int data){
-    for(int i = 1; i <= size; ++i){
-        if(data == array[i]){
-            return true;
-        }
-    }
-    return false;
+    return search(1, data);
 }
 
 bool MinHeap::search(int i, int data){
-    if(size == 0){
-        throw "nothing to search";
+    if(i>size || i<1){
+        return false;
     }
-    for(int j = 1; j<=size;j++){
-        if(array[j] == i){
-            return true;
-        }
+    else if(data == array[i]){
+        return true;
+    }
+    if(i*2 <= size && data >= array[i*2]){
+       if(false || search(i*2, data)){
+           return true;
+       }
+    }
+    if((i*2)+1 <= size && data >= array[(i*2)+1]){
+       if(false || search((i*2)+1, data)){
+           return true;
+       }
     }
     return false;
 }
